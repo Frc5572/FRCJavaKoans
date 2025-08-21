@@ -13,12 +13,12 @@ import java.util.List;
 
 import engine.Koan;
 import engine.text.Localizable;
+import koans.AboutLoops;
 
 
 public class AboutLoopsKoans {
     private static final Localizable<Class<?>> CLASS =
-        localClass(koans.english.AboutLoops.class)
-        .fr(koans.french.AboutLoops.class);
+        localClass(AboutLoops.class);
 
     public static final List<Koan> koans = List.of(
         new Koan(CLASS, FIRST_LOOP)

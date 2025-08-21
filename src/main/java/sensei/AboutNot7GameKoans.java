@@ -24,11 +24,11 @@ import engine.console.Printer;
 import engine.text.Localizable;
 import engine.util.ResToIntFunction;
 import engine.ResultAssertion;
+import koans.AboutNot7Game;
 
 public class AboutNot7GameKoans {
     private static final Localizable<Class<?>> CLASS =
-        localClass(koans.english.AboutNot7Game.class)
-        .fr(koans.french.AboutNot7Game.class);
+        localClass(AboutNot7Game.class);
 
     private static final GameRoundv5Assertions GAME_ROUND_ASSERTIONS = new GameRoundv5Assertions(false);
 

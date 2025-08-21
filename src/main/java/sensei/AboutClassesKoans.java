@@ -13,13 +13,14 @@ import static sensei.Texts.*;
 
 import java.util.List;
 
+import bonuses.AboutArrays;
 import engine.Koan;
 import engine.text.Localizable;
+import koans.AboutClasses;
 
 public class AboutClassesKoans {
     private static final Localizable<Class<?>> CLASS =
-        localClass(koans.english.AboutClasses.class)
-        .fr(koans.french.AboutClasses.class);
+        localClass(AboutClasses.class);
 
     public static final List<Koan> koans = List.of(
         new Koan(CLASS, CLASSES_AND_PACKAGES)

@@ -20,11 +20,11 @@ import java.util.List;
 import engine.Koan;
 import engine.script.Type;
 import engine.text.Localizable;
+import koans.AboutObjects;
 
 public class AboutObjectsKoans {
     private static final Localizable<Class<?>> CLASS =
-        localClass(koans.english.AboutObjects.class)
-        .fr(koans.french.AboutObjects.class);
+        localClass(AboutObjects.class);
     private static final Type DOUBLE = type(double.class);
     private static final Type POINT = type("geom.Point");
     private static final Type ROBOT_AUTO_SCORE = type("frc.RobotAutoScore");

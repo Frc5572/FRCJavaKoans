@@ -15,6 +15,7 @@ import static sensei.Texts.*;
 import java.util.List;
 import java.util.function.IntPredicate;
 
+import bonuses.AboutInterfaces;
 import bonuses.teachingmaterial.Combining;
 import engine.Koan;
 import engine.text.Localizable;
@@ -22,8 +23,7 @@ import engine.text.Localizable;
 
 public class AboutInterfacesKoans {
     private static final Localizable<Class<?>> CLASS =
-        localClass(bonuses.english.AboutInterfaces.class)
-        .fr(bonuses.french.AboutInterfaces.class);
+        localClass(AboutInterfaces.class);
 
     public static final List<Koan> koans = List.of(
         new Koan(CLASS, FIRST_INTERFACE_IMPLEMENTATIONS)

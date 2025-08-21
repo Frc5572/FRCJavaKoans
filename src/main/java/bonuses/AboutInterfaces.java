@@ -1,4 +1,4 @@
-package bonuses.english;
+package bonuses;
 
 import java.util.List;
 import java.util.function.IntPredicate;
@@ -260,8 +260,4 @@ public class AboutInterfaces {
      * 
      */
 
-
-     public static void main(String[] args) {
-        new Sensei(Locale.en, List.of(AboutInterfacesKoans.koans)).offerKoans();
-    }
 }

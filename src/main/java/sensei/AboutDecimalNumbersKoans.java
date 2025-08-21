@@ -10,11 +10,11 @@ import java.util.List;
 
 import engine.Koan;
 import engine.text.Localizable;
+import koans.AboutDecimalNumbers;
 
 public class AboutDecimalNumbersKoans {
     private static final Localizable<Class<?>> CLASS =
-        localClass(koans.english.AboutDecimalNumbers.class)
-        .fr(koans.french.AboutDecimalNumbers.class);
+        localClass(AboutDecimalNumbers.class);
 
     public static final List<Koan> koans = List.of(
         new Koan(CLASS, CONVERTING_A_MEASURE_OF_LENGTH)

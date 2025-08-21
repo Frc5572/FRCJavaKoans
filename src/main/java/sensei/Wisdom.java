@@ -2,6 +2,7 @@ package sensei;
 
 import java.util.List;
 
+import bonuses.AboutInterfaces;
 import engine.Koan;
 
 /**
@@ -18,5 +19,10 @@ public final class Wisdom {
         AboutNot7GameKoans.koans,
         AboutClassesKoans.koans,
         AboutObjectsKoans.koans
+    );
+
+    public static final List<List<Koan>> advancedKoans = List.of(
+            AboutArraysKoans.koans,
+            AboutInterfacesKoans.koans
     );
 }

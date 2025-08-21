@@ -1,4 +1,4 @@
-package bonuses.english;
+package bonuses;
 
 import java.util.List;
 
@@ -399,8 +399,4 @@ public class AboutArrays {
      * 
      */
 
-
-     public static void main(String[] args) {
-        new Sensei(Locale.en, List.of(AboutArraysKoans.koans)).offerKoans();
-    }
 }

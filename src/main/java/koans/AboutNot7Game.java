@@ -1,4 +1,4 @@
-package koans.english;
+package koans;
 
 import static engine.Helpers.random;
 import static engine.Helpers.readLine;

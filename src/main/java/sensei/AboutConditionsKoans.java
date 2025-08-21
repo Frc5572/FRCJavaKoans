@@ -11,11 +11,11 @@ import java.util.List;
 
 import engine.Koan;
 import engine.text.Localizable;
+import koans.AboutConditions;
 
 public class AboutConditionsKoans {
     private static final Localizable<Class<?>> CLASS =
-        localClass(koans.english.AboutConditions.class)
-        .fr(koans.french.AboutConditions.class);
+        localClass(AboutConditions.class);
 
     public static final List<Koan> koans = List.of(
         new Koan(CLASS, IF_CONSTRUCT_AND_CONDITIONS)

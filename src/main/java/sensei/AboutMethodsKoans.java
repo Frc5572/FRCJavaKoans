@@ -15,12 +15,12 @@ import java.util.List;
 
 import engine.Koan;
 import engine.text.Localizable;
+import koans.AboutMethods;
 
 
 public class AboutMethodsKoans {
     private static final Localizable<Class<?>> CLASS =
-        localClass(koans.english.AboutMethods.class)
-        .fr(koans.french.AboutMethods.class);
+        localClass(AboutMethods.class);
 
     public static final List<Koan> koans = List.of(
         new Koan(CLASS, REPETITIVE_TASKS)

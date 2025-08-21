@@ -1,4 +1,4 @@
-package koans.english;
+package koans;
 
 public class AboutClasses {
     /**
@@ -21,7 +21,7 @@ public class AboutClasses {
      * Notice: in Java, when we need to locate something within something else, we use the dot notation.
      * For example, the class 'AboutClasses' within the 'english' package within the 'koans' package is noted:
      * 
-     *     koans.english.AboutClasses
+     *     koans.AboutClasses
      * 
      * To create a class, create a file named '[class name].java' in its package folder. You may have to create the folder first if this is the first class of this package.
      * 
@@ -50,7 +50,7 @@ public class AboutClasses {
     /**
      * # Using a different class
      * 
-     * Using utils.MathUtils.cube, create a method 'displayCube' in koans.english.AboutClasses which displays the cube of a number in the console.
+     * Using utils.MathUtils.cube, create a method 'displayCube' in koans.AboutClasses which displays the cube of a number in the console.
      * 
      * ---------   TIPS --------------
      * 
@@ -99,7 +99,7 @@ public class AboutClasses {
     /**
      * # Using a class in a nested package
      * 
-     * Using utils.math.OtherMathUtils.max, create a method 'displayMax' in koans.english.AboutClasses which display the greater of 2 integers.
+     * Using utils.math.OtherMathUtils.max, create a method 'displayMax' in koans.AboutClasses which display the greater of 2 integers.
      * 
      * -------------------------------
      * 
@@ -113,7 +113,7 @@ public class AboutClasses {
     /**
      * # Using a class from a previous Koan
      * 
-     * Using the 'min' method created in a previous Koan, create a method 'displayMin' in koans.english.AboutClasses which display the lesser of 2 integers.
+     * Using the 'min' method created in a previous Koan, create a method 'displayMin' in koans.AboutClasses which display the lesser of 2 integers.
      * 
      * ---------   TIPS   --------------
      * 

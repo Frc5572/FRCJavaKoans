@@ -1,4 +1,4 @@
-package koans.english;
+package koans;
 
 public class AboutLoops {
     /**
