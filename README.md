@@ -256,8 +256,8 @@ To help you remember the bits of Java syntax you are learning while completing y
 
 After completing the koans, you are ready to learn how to program an actual robot. Mykah, from [team 9153 - Bearcat Robotics](https://sites.google.com/lincolnschoolscb.org/9153-bearcat-robotics/home), is maintaining a [wonderful compendium of FRC programming resources](https://docs.google.com/document/d/1jcBLAyJ3iTbsYSnWMVWqHaK8uywGTaTjF98eY_xxpl0/edit#heading=h.21bclvyus8vm) from which you can dig for your next steps.
 
-Once you understand how to program a simple `TimedRobot`, you can come back here and practice with bonus koans you will find in `src/main/java/bonuses/english`. These koan series are independant of each other and can be followed in any order.
-To run them, right click on the one you are interested, for example `src/main/java/bonuses/english/AboutArrays.java` and choose `Run Java` directely on the koans file itself.
+Once you understand how to program a simple `TimedRobot`, you can come back here and practice with bonus koans you will find in `src/main/java/advanced_koans/english`. These koan series are independant of each other and can be followed in any order.
+To run them, right click on the one you are interested, for example `src/main/java/advanced_koans/english/AboutArrays.java` and choose `Run Java` directely on the koans file itself.
 
 <br/>
 
@@ -277,12 +277,12 @@ We have found that students learn faster if mentors are not giving solutions to 
 2) Not part of the FRC Java Koans: make them program their first robot with a simple `TimedRobot`. It is suggested to have a simple differential drive robot.
   * Super simple auto mode making the robot go forward at 20% speed for 1 second.
   * Simple teleop mode making the robot move with a joystick.
-3) Students can now follow the `src/main/java/bonuses/english/AboutInterfaces.java` bonus koans.
+3) Students can now follow the `src/main/java/advanced_koans/english/AboutInterfaces.java` bonus koans.
 4) Not part of the FRC Java Koans: make them program the simple robot again, but using [commands based programming](https://docs.wpilib.org/en/stable/docs/software/commandbased/index.html).
 
 Optional:
 
-Before teaching them to deal with a Swerve Drive, the students could follow `src/main/java/bonuses/english/AboutArrays.java` to learn arrays and `for` loops.
+Before teaching them to deal with a Swerve Drive, the students could follow `src/main/java/advanced_koans/english/AboutArrays.java` to learn arrays and `for` loops.
 
 ### Topics included
 

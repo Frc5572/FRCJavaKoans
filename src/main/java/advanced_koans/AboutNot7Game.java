@@ -1,7 +1,4 @@
-package koans;
-
-import static engine.Helpers.random;
-import static engine.Helpers.readLine;
+package advanced_koans;
 
 public class AboutNot7Game {
     /**

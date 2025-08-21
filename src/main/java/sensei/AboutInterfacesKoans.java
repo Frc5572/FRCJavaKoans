@@ -15,8 +15,8 @@ import static sensei.Texts.*;
 import java.util.List;
 import java.util.function.IntPredicate;
 
-import bonuses.AboutInterfaces;
-import bonuses.teachingmaterial.Combining;
+import advanced_koans.AboutInterfaces;
+import advanced_koans.teachingmaterial.Combining;
 import engine.Koan;
 import engine.text.Localizable;
 

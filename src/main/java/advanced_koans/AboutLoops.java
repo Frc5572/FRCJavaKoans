@@ -1,4 +1,4 @@
-package koans;
+package advanced_koans;
 
 public class AboutLoops {
     /**

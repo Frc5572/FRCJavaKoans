@@ -2,7 +2,6 @@ package sensei;
 
 import java.util.List;
 
-import bonuses.AboutInterfaces;
 import engine.Koan;
 
 /**
@@ -15,14 +14,14 @@ public final class Wisdom {
         AboutConditionsKoans.koans,
         AboutMoreMethodsKoans.koans,
         AboutDecimalNumbersKoans.koans,
-        AboutLoopsKoans.koans,
-        AboutNot7GameKoans.koans,
         AboutClassesKoans.koans,
         AboutObjectsKoans.koans
     );
 
     public static final List<List<Koan>> advancedKoans = List.of(
+            AboutLoopsKoans.koans,
             AboutArraysKoans.koans,
-            AboutInterfacesKoans.koans
+            AboutInterfacesKoans.koans,
+            AboutNot7GameKoans.koans
     );
 }

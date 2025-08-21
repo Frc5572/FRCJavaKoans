@@ -1,20 +1,12 @@
-package bonuses;
-
-import java.util.List;
-import java.util.function.IntPredicate;
-
-import bonuses.teachingmaterial.Combining;
-import engine.Sensei;
-import engine.text.Locale;
-import sensei.AboutInterfacesKoans;
+package advanced_koans;
 
 public class AboutInterfaces {
     /**
      * # First interface implementations
      * 
-     * Write a class 'numbers.AddNumbers' which implements interface 'bonuses.teachingmaterial.Combining'.
+     * Write a class 'numbers.AddNumbers' which implements interface 'advanced_koans.teachingmaterial.Combining'.
      * The implementation of the combine() method should return the 2 numbers added together.
-     * Write a class 'numbers.MultiplyNumbers' which also implements interface 'bonuses.teachingmaterial.Combining'.
+     * Write a class 'numbers.MultiplyNumbers' which also implements interface 'advanced_koans.teachingmaterial.Combining'.
      * This implementation of the combine() method should return the 2 numbers multiplied together.
      * 
      * ---------   TIPS   --------------
@@ -71,7 +63,7 @@ public class AboutInterfaces {
      * Notice the type of the variable 'tossedWeapon' is a 'Weapon', not a 'Sword'. Interfaces, like classes, are types you can use for your variables, fields, and parameters.
      * Because 'Sword' implements 'Weapon', Java considers that a 'Sword' object _is_ a 'Weapon'. Having variables using the interface type allows it to take values from objects from multiple classes, as long as they all implement the interface.
      * 
-     * Take a look at the 'bonuses.teachingmaterial.Combining' interface. It defines a method which can be implemented in various ways.
+     * Take a look at the 'advanced_koans.teachingmaterial.Combining' interface. It defines a method which can be implemented in various ways.
      * This exercise is about implementing that interface in 2 ways.
      * 
      * -------------------------------
@@ -96,7 +88,7 @@ public class AboutInterfaces {
     /**
      * # Anonymous interface implementation
      * 
-     * Write a method 'getAnonymousCombining' which returns an anonymous implementation of 'bonuses.teachingmaterial.Combining'.
+     * Write a method 'getAnonymousCombining' which returns an anonymous implementation of 'advanced_koans.teachingmaterial.Combining'.
      * The implementation of the combine() method should return the second number subtracted from the first.
      * 
      * ---------   TIPS   --------------
@@ -134,7 +126,7 @@ public class AboutInterfaces {
     /**
      * # Lambda methods
      * 
-     * Write a method 'getLambdaCombining' which returns an lambda method implementing 'bonuses.teachingmaterial.Combining'.
+     * Write a method 'getLambdaCombining' which returns an lambda method implementing 'advanced_koans.teachingmaterial.Combining'.
      * The implementation of the combine() method should return the first number subtracted from the second.
      * 
      * ---------   TIPS   --------------

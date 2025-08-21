@@ -1,10 +1,4 @@
-package bonuses;
-
-import java.util.List;
-
-import engine.Sensei;
-import engine.text.Locale;
-import sensei.AboutArraysKoans;
+package advanced_koans;
 
 public class AboutArrays {
     /**

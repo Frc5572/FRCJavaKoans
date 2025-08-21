@@ -1,4 +1,4 @@
-package bonuses.teachingmaterial;
+package advanced_koans.teachingmaterial;
 
 /**
  * This file is used by the AboutInterfaces koans.
