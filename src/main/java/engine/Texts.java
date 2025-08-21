@@ -81,7 +81,7 @@ public class Texts {
         local("Expected class %s to be instantiable, but it is not.")
         .fr("Attendu ce que la classe %s soit instantiable, mais ne l'est pas.");
     public static final Localizable<String> PLEASE_MEDITATE_ON =
-        local("Please meditate on %s in src/main/java/koans/english/%s.java")
+        local("Please meditate on %s in .(%s.java:1)")
         .fr("Tu peux méditer sur %s dans src/main/java/koans/french/%s.java");
     public static final Localizable<String> THE_MASTER_SENSED_AN_HARMONY_BREACH_WHEN_ANSWERING =
         local("The master sensed the harmony dissolving when planning to answer %s.")
