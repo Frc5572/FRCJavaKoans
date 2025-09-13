@@ -2,6 +2,7 @@ package engine;
 
 import java.util.Random;
 import java.util.Scanner;
+import java.util.function.IntConsumer;
 
 public class Helpers {
     private static final Random rng = new Random();
@@ -27,5 +28,9 @@ public class Helpers {
 
     public static double random() {
         return rng.nextDouble();
+    }
+
+    public static IntConsumer createNumberPrinter(String name) {
+        return num -> System.out.println(name + " " + num + " - " + ((num + 1) * num));
     }
 }

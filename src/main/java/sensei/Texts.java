@@ -378,5 +378,10 @@ public class Texts {
     static final Localizable<String> COMMON_LAMBDA_INTERFACES = 
         local("Common lambda interfaces")
         .fr("Interfaces lambda communes");
+
+    // AboutLambdas
+    static final Localizable<String> AN_INTRODUCTION_TO_LAMBDAS = local("An introduction to lambdas");
+    static final Localizable<String> USING_LAMBDAS = local("Using lambdas");
+    static final Localizable<String> CREATING_REFERENCES_TO_LAMBDAS = local("Creating references to lambdas");
 }
 
