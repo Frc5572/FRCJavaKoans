@@ -6,6 +6,8 @@ import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.Set;
 
+import edu.wpi.first.units.Measure;
+
 import engine.KoanBugException;
 import engine.text.Locale;
 import engine.text.Localizable;
@@ -147,10 +149,13 @@ public sealed interface Expression {
             return String.format("\"%s\"", value);
         } else if (value instanceof int[] arr) {
             final var elts = String.join(
-                ",", 
+                ",",
                 Arrays.stream(arr).<String>mapToObj(Integer::toString).toList()
             );
-            return String.format("new int[]{%s}", elts);    
+            return String.format("new int[]{%s}", elts);
+        } else if (value instanceof final Measure<?> measure) {
+            // A measure's toString() is not valid Java, so it gets its own formatting.
+            return Measures.formatSourceCode(measure);
         }
         return value.toString();
     }
@@ -262,8 +267,10 @@ final record Literal(Object value) implements Expression {
     );
 
     public Literal {
-        if (value != null && !ALLOWED_LITERAL_TYPES.contains(value.getClass())) {
-            throw new KoanBugException("Only null, String, int arrays, and primitive types are allowed as literal in an Expression");
+        // Measures are matched with instanceof rather than by class: the koans name them by their
+        // interface (Distance, Angle, ...), but every value is really an ImmutableXxx.
+        if (value != null && !ALLOWED_LITERAL_TYPES.contains(value.getClass()) && !Measures.isMeasure(value)) {
+            throw new KoanBugException("Only null, String, int arrays, WPILib measures, and primitive types are allowed as literal in an Expression");
         }
     }
 

@@ -57,8 +57,8 @@ public class Texts {
         local("Expected to find a method called '%s' in src/main/java/%s.java with a '%s' return type but did not find any.")
         .fr("Attendu à une méthode nommée '%s' dans src/main/java/%s.java, avec un type de retour '%s' mais ne la trouve pas.");
     public static final Localizable<String> EXPECTED_TO_FIND_MEHOD_ONE_PARAM =
-        local("Expected to find a public method called '%s' in src/main/java/%s.java with a %s parameter but did not find any.")
-        .fr("Attendu à une méthode publique nommée '%s' dans src/main/java/%s.java, avec un paramètre %s mais ne la trouve pas.");
+        local("Expected to find a public method called '%s' in src/main/java/%s.java with a parameter of type %s but did not find any.")
+        .fr("Attendu à une méthode publique nommée '%s' dans src/main/java/%s.java, avec un paramètre de type %s mais ne la trouve pas.");
     public static final Localizable<String> EXPECTED_TO_FIND_MEHOD_MANY_PARAMS =
         local("Expected to find a public method called '%s' in src/main/java/%s.java with parameters of type %s but did not find any.")
         .fr("Attendu à une méthode publique nommée '%s' dans src/main/java/%s.java, avec des paramètres de type %s mais ne la trouve pas.");

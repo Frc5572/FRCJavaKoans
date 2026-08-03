@@ -19,6 +19,7 @@ public final class Wisdom {
         AboutLoopsKoans.koans,
         AboutClassesKoans.koans,
         AboutObjectsKoans.koans,
+        AboutUnitsKoans.koans,
         AboutArraysKoans.koans,
         AboutInterfacesKoans.koans,
         AboutLambdasKoans.koans,

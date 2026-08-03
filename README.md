@@ -1,9 +1,3 @@
-If you're on 749 or 955, please follow the instructions in our training. 
-
-Original README is as follows.
-
----
-
 # Java Koans for the FRC
 
 ## Table of content
@@ -298,22 +292,25 @@ All the koans live on one path, in `sensei/Wisdom.java` order:
 
 ```
 AboutConsoleAndVariables    AboutObjects
-AboutMethods                AboutArrays
-AboutConditions             AboutInterfaces
-AboutMoreMethods            AboutLambdas
-AboutDecimalNumbers         AboutNot7Game
-AboutLoops
+AboutMethods                AboutUnits
+AboutConditions             AboutArrays
+AboutMoreMethods            AboutInterfaces
+AboutDecimalNumbers         AboutLambdas
+AboutLoops                  AboutNot7Game
 AboutClasses
 ```
 
-A good place to break for robot work is after `AboutObjects` — by then students know everything
+A good place to break for robot work is after `AboutUnits` — by then students know everything
 they need for a simple `TimedRobot`:
 
 1) Students complete the path up to and including `AboutObjects`.
-2) Not part of the FRC Java Koans: make them program their first robot with a simple `TimedRobot`. It is suggested to have a simple differential drive robot.
+2) `AboutUnits` is the first koan series using WPILib itself. It teaches `edu.wpi.first.units`,
+   which every measurement on a real robot goes through, and it only needs what `AboutObjects`
+   already taught: calling methods on an object.
+3) Not part of the FRC Java Koans: make them program their first robot with a simple `TimedRobot`. It is suggested to have a simple differential drive robot.
   * Super simple auto mode making the robot go forward at 20% speed for 1 second.
   * Simple teleop mode making the robot move with a joystick.
-3) Students carry on with `AboutArrays` through `AboutLambdas`. `AboutArrays` is worth doing before
+4) Students carry on with `AboutArrays` through `AboutLambdas`. `AboutArrays` is worth doing before
    they have to deal with a Swerve Drive, and `AboutInterfaces`/`AboutLambdas` before command based
    programming.
 4) Not part of the FRC Java Koans: make them program the simple robot again, but using [commands based programming](https://docs.wpilib.org/en/stable/docs/software/commandbased/index.html).

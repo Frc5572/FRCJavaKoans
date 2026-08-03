@@ -3,6 +3,7 @@ package engine.console;
 import java.util.Arrays;
 import java.util.List;
 
+import engine.script.Measures;
 import engine.script.Type;
 import engine.text.Locale;
 import engine.text.Localizable;
@@ -93,6 +94,12 @@ public final record Fmt(Localizable<String> templ, Style style, Fmt... children)
     }
 
     public static Fmt classSimpleName(final Class<?> clasz) {
+        // A measure is reported by its interface (Distance, Angle, ...) rather than by the
+        // ImmutableXxx class it really is, so the name matches what the koan asked the student for.
+        final var measureName = Measures.typeName(clasz);
+        if (measureName != null) {
+            return code(measureName);
+        }
         final var unboxed = Type.UNBOXED.getOrDefault(clasz, clasz);
         return code(unboxed.getSimpleName());
     }

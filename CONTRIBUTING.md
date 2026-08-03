@@ -143,6 +143,30 @@ What is available, and what is not:
   natives on the classpath, so `WPIMathJNI`-backed classes (`DARE`, `LinearQuadraticRegulator`)
   will fail at runtime. This is deliberate — the koans teach types and math, not a robot program.
 
+### Measures in koan expressions
+
+Measures are usable directly as literals in the `Koan` DSL, so a koan can hand the student's method
+a typed measurement and assert on the one it returns:
+
+```java
+new Koan(CLASS, ADDING_TWO_MEASUREMENTS)
+    .beforeFirstTest(assertKoanMethodIsInvokable("totalExtension", Distance.class, Distance.class))
+    .when(callKoanMethod("totalExtension", Feet.of(1.0), Centimeters.of(20.0)))
+    .then(assertReturnValueEquals(Centimeters.of(50.48)))
+```
+
+Two things are worth knowing when writing such assertions:
+
+- `assertReturnValueEquals` compares measures the way WPILib does, which is unit-agnostic and has a
+  small tolerance. `Inches.of(12.0)` and `Feet.of(1.0)` are equal, so an assertion cannot pin down
+  which unit the student returned — only the quantity. Assert on a `double` obtained through
+  `.in(SomeUnit)` when the unit itself is the point of the exercise.
+- The type in `assertKoanMethodIsInvokable` must be the interface the student writes (`Distance`,
+  `Angle`, `Time`, ...), not the `ImmutableXxx` class the values really are. Failure messages report
+  interface names too, courtesy of [Measures.java](src/main/java/engine/script/Measures.java), which
+  also renders measures back into source code the student could type — `Inches.of(2.0)` rather than
+  the `2.000e+00 in` their `toString()` produces.
+
 The WPILib release is pinned by `wpilibVersion` in [gradle.properties](gradle.properties). Bumping a
 season is a one-line change there, but check that the `ejml` / `jackson` / `quickbuf` versions in
 [build.gradle](build.gradle) still match allwpilib's own `wpimath/build.gradle` at the new tag —

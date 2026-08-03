@@ -324,8 +324,19 @@ public class Texts {
         local("RobotScore: notes in speaker = 0; notes in amp = 2")
         .fr("ScoreRobot: notes dans le haut parleur = 0; notes dans le amp = 2");
 
+    // AboutUnits
+    static final Localizable<String> MEASURING_A_DISTANCE = local("Measuring a distance");
+    static final Localizable<String> GETTING_A_PLAIN_NUMBER_BACK_OUT = local("Getting a plain number back out");
+    static final Localizable<String> ACCEPTING_ANY_UNIT_THE_CALLER_LIKES = local("Accepting any unit the caller likes");
+    static final Localizable<String> LABELLING_A_SENSOR_READING = local("Labelling a sensor reading");
+    static final Localizable<String> ADDING_TWO_MEASUREMENTS = local("Adding two measurements");
+    static final Localizable<String> COMPARING_TWO_MEASUREMENTS = local("Comparing two measurements");
+    static final Localizable<String> DECIDING_WE_ARE_CLOSE_ENOUGH = local("Deciding we are close enough");
+    static final Localizable<String> SCALING_A_MEASUREMENT = local("Scaling a measurement");
+    static final Localizable<String> DIVIDING_ONE_MEASUREMENT_BY_ANOTHER = local("Dividing one measurement by another");
+
     // AboutArrays
-    static final Localizable<String> FOR_LOOPS = 
+    static final Localizable<String> FOR_LOOPS =
         local("For loops")
         .fr("Boucles for");
     static final Localizable<String> FIRST_ELEMENT_OF_AN_ARRAY = 
