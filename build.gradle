@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://frcmaven.wpi.edu/artifactory/release' }
+}
+
+dependencies {
+    // WPILib publishes POMs with no transitive dependencies at all, so every dependency
+    // wpimath needs has to be listed by hand. The versions below are copied verbatim from
+    // allwpilib's own wpimath/build.gradle at the tag matching wpilibVersion.
+    implementation "edu.wpi.first.wpiunits:wpiunits-java:$wpilibVersion"
+    implementation "edu.wpi.first.wpimath:wpimath-java:$wpilibVersion"
+    implementation "edu.wpi.first.wpiutil:wpiutil-java:$wpilibVersion"
+    implementation 'org.ejml:ejml-simple:0.44.0'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.19.2'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.19.2'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.19.2'
+    implementation 'us.hebi.quickbuf:quickbuf-runtime:1.4'
+}
+
+// No java.toolchain block on purpose: it would make Gradle hunt for (or download) one exact
+// JDK, which fails on student machines that only have the JDK bundled with WPILib VS Code.
+// The koans need Java 17 or newer, which every supported WPILib install already provides.
+
+application {
+    mainClass = 'PathToEnlightment'
+}
+
+tasks.named('run') {
+    // Several koan series ask the student to read from the console, so the run task has to
+    // hand the real stdin to the JVM instead of Gradle's empty default.
+    standardInput = System.in
+}
+
+// The engine's own tests, run by the hand-rolled runner in engine.test.runner.
+tasks.register('engineTests', JavaExec) {
+    group = 'verification'
+    description = 'Runs the koan engine test suite.'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'engine.test.runner.TestRunner'
+}

@@ -1,4 +1,4 @@
-package advanced_koans;
+package koans;
 
 public class AboutArrays {
     /**

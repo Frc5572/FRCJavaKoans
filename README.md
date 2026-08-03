@@ -10,6 +10,7 @@ Original README is as follows.
 
 - [Overview](#overview)
 - [Getting Started with VS Code](#getting-started-with-vs-code)
+- [Running the koans from a terminal](#running-the-koans-from-a-terminal)
 - [Getting Started with GitHub Codespaces](#getting-started-with-github-codespaces)
 - [Learning to code with the Java Koans for the FRC](#learning-to-code-with-the-java-koans-for-the-frc)
 - [Java cheat sheet](#java-cheat-sheet)
@@ -45,7 +46,26 @@ And open the folder in which you extracted the koans (for example, `C:\Users\Jan
 
 Note: VS Code will ask you if you trust the code within the folder. You'll have to answer 'yes' to proceed.
 
+The first time you open the folder, VS Code will spend a minute importing the Gradle project and
+downloading the libraries the koans use. Let it finish before running anything.
+
 You are ready to go!
+
+## Running the koans from a terminal
+
+If you'd rather not use the VS Code right-click menu, the koans are a normal Gradle project:
+
+```sh
+./gradlew run --console=plain     # ask the master for koans
+./gradlew build                   # just check that everything compiles
+```
+
+`--console=plain` matters: without it, Gradle's progress bar redraws over the master's output.
+
+On Windows, use `gradlew.bat` instead of `./gradlew`.
+
+You do not need to install Gradle — `gradlew` downloads the right version by itself. You do need a
+Java 17 or newer JDK, which the WPILib installer already gives you.
 
 ## Getting Started with GitHub Codespaces
 
@@ -67,7 +87,7 @@ When you open the Java Koans for the FRC in VS Code, you should see something si
 
 ![VS Code](images/opened_koans.png)
 
-Expand the `src` folder, then right click on the file `src\main\java\EnglishPathToEnlightment.java` and choose `Run Java`:
+Expand the `src` folder, then right click on the file `src/main/java/PathToEnlightment.java` and choose `Run Java`:
 
 ![Run Java](images/run_java.png)
 
@@ -81,13 +101,13 @@ The master of the Java Koans is telling you a lot of things at once, so let's de
 
 ![First result, commented](images/result1_commented.png)
 
-First, it tells you that it is trying to teach you  `AboutConsoleAndVariables`. Then it tells you that you did not complete the `Displaying some text in the console` koan. Which is normal, because you have not even started yet! Then it shows a mysterious `Console` box, which we will ignore for now. At the very bottom, it tells you you can look for `Displaying some text in the console` in the `src/main/java/koans/english/AboutConsoleAndVariables.java` file.
+First, it tells you that it is trying to teach you  `AboutConsoleAndVariables`. Then it tells you that you did not complete the `Displaying some text in the console` koan. Which is normal, because you have not even started yet! Then it shows a mysterious `Console` box, which we will ignore for now. At the very bottom, it tells you you can look for `Displaying some text in the console` in the `src/main/java/koans/AboutConsoleAndVariables.java` file.
 
 ### Opening the koan file
 
 Open that file in VS Code:
 
-![open src/main/java/koans/english/AboutConsoleAndVariables.java](images/open_first_koan.png)
+![open src/main/java/koans/AboutConsoleAndVariables.java](images/open_first_koan.png)
 
 Wow, there is a lot going on! In order to understand what is all of this, we need to learn a few things about Java.
 
@@ -96,7 +116,7 @@ Wow, there is a lot going on! In order to understand what is all of this, we nee
 All the code written in Java must go in files with the `.java` extension. The content of these files follow a pretty strict organisation. First at the top, there are a few lines helping Java knowing which other files it will need to get in order to make sense of this one:
 
 ```java
-package koans.english;
+package koans;
 
 import static engine.Helpers.readLine;
 ```
@@ -230,7 +250,7 @@ Now that we think we completed the koan, let's ask the master what he thinks and
 ![Second result](images/result2.png)
 
 
-Oops, we made a mistake! The master was expecting us to display _Hello!_, but we forgot the exclamation mark. Let's fix it in `src/main/java/koans/english/AboutConsoleAndVariables.java`:
+Oops, we made a mistake! The master was expecting us to display _Hello!_, but we forgot the exclamation mark. Let's fix it in `src/main/java/koans/AboutConsoleAndVariables.java`:
 
 ```java
     public static void sayHelloInConsole() {
@@ -246,7 +266,7 @@ And run the koans again:
 
 That's a completely different message! This is because we successfully completed the first koan! So our master is telling us about our progress and about the next koan.
 
-Congratulations, you completed your first koan! You can now look at the next koan in the `src/main/java/koans/english/AboutConsoleAndVariables.java` file and try to figure out how to complete the next koan!
+Congratulations, you completed your first koan! You can now look at the next koan in the `src/main/java/koans/AboutConsoleAndVariables.java` file and try to figure out how to complete the next koan!
 
 ## Java cheat sheet
 
@@ -256,8 +276,9 @@ To help you remember the bits of Java syntax you are learning while completing y
 
 After completing the koans, you are ready to learn how to program an actual robot. Mykah, from [team 9153 - Bearcat Robotics](https://sites.google.com/lincolnschoolscb.org/9153-bearcat-robotics/home), is maintaining a [wonderful compendium of FRC programming resources](https://docs.google.com/document/d/1jcBLAyJ3iTbsYSnWMVWqHaK8uywGTaTjF98eY_xxpl0/edit#heading=h.21bclvyus8vm) from which you can dig for your next steps.
 
-Once you understand how to program a simple `TimedRobot`, you can come back here and practice with bonus koans you will find in `src/main/java/advanced_koans/english`. These koan series are independant of each other and can be followed in any order.
-To run them, right click on the one you are interested, for example `src/main/java/advanced_koans/english/AboutArrays.java` and choose `Run Java` directely on the koans file itself.
+The koans are a single ordered path, from printing to the console all the way to writing a small
+game. There is nothing separate to launch: keep running `PathToEnlightment` and the master will
+walk you through every series in turn.
 
 <br/>
 
@@ -273,16 +294,30 @@ We have found that students learn faster if mentors are not giving solutions to 
 
 ### Full curiculum suggestion
 
-1) Start with the students completing all the initial koan series ("EnglishPathToEnlightment").
+All the koans live on one path, in `sensei/Wisdom.java` order:
+
+```
+AboutConsoleAndVariables    AboutObjects
+AboutMethods                AboutArrays
+AboutConditions             AboutInterfaces
+AboutMoreMethods            AboutLambdas
+AboutDecimalNumbers         AboutNot7Game
+AboutLoops
+AboutClasses
+```
+
+A good place to break for robot work is after `AboutObjects` — by then students know everything
+they need for a simple `TimedRobot`:
+
+1) Students complete the path up to and including `AboutObjects`.
 2) Not part of the FRC Java Koans: make them program their first robot with a simple `TimedRobot`. It is suggested to have a simple differential drive robot.
   * Super simple auto mode making the robot go forward at 20% speed for 1 second.
   * Simple teleop mode making the robot move with a joystick.
-3) Students can now follow the `src/main/java/advanced_koans/english/AboutInterfaces.java` bonus koans.
+3) Students carry on with `AboutArrays` through `AboutLambdas`. `AboutArrays` is worth doing before
+   they have to deal with a Swerve Drive, and `AboutInterfaces`/`AboutLambdas` before command based
+   programming.
 4) Not part of the FRC Java Koans: make them program the simple robot again, but using [commands based programming](https://docs.wpilib.org/en/stable/docs/software/commandbased/index.html).
-
-Optional:
-
-Before teaching them to deal with a Swerve Drive, the students could follow `src/main/java/advanced_koans/english/AboutArrays.java` to learn arrays and `for` loops.
+5) `AboutNot7Game` is a capstone: it asks them to put the whole path together into a working game.
 
 ### Topics included
 
@@ -294,11 +329,8 @@ Before teaching them to deal with a Swerve Drive, the students could follow `src
 * `while` loops
 * Packages and classes with static methods
 * Objects, constructors, fields
-
-In the bonus koans:
-
 * Arrays and `for` loops
-* Functional interfaces
+* Interfaces, anonymous implementations, and lambdas
 
 ### Contributing and learning more
 

@@ -14,7 +14,7 @@ import static sensei.Texts.*;
 
 import java.util.List;
 
-import advanced_koans.AboutArrays;
+import koans.AboutArrays;
 import engine.Koan;
 import engine.text.Localizable;
 

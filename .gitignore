@@ -1,4 +1,7 @@
 bin
+build
+.gradle
+!gradle/wrapper/gradle-wrapper.jar
 *.iml
 .idea
 out

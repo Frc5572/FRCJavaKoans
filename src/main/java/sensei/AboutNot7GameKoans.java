@@ -24,7 +24,7 @@ import engine.console.Printer;
 import engine.text.Localizable;
 import engine.util.ResToIntFunction;
 import engine.ResultAssertion;
-import advanced_koans.AboutNot7Game;
+import koans.AboutNot7Game;
 
 public class AboutNot7GameKoans {
     private static final Localizable<Class<?>> CLASS =

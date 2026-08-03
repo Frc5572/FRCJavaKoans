@@ -13,7 +13,7 @@ import java.util.List;
 
 import engine.Koan;
 import engine.text.Localizable;
-import advanced_koans.AboutLoops;
+import koans.AboutLoops;
 
 
 public class AboutLoopsKoans {

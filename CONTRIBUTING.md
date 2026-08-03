@@ -5,6 +5,10 @@
     - [What the FRC Java Koans is _not_](#what-the-frc-java-koans-is-not)
     - [Technical aspects](#technical-aspects)
 - [Contributing](#contributing)
+    - [I want to contribute. What can I do?](#i-want-to-contribute-what-can-i-do)
+    - [Adding a koan series](#adding-a-koan-series)
+    - [Writing koans that use WPILib](#writing-koans-that-use-wpilib)
+    - [Testing](#testing)
 
 # Design decisions
 
@@ -67,6 +71,10 @@ We expressed above a concern for saving student's attention / motivation / time.
 - Simple start: no dependency other than the Java standard library, so as to avoid a build step with a dependency management tool. This has consequences: the project has to includes a mini test framework for example.
 - Java 17, because as of 2024, this is the version used by default in WPILib's VSCode.
 
+Note: this fork has traded the second goal away. It uses Gradle, because we want koans that teach
+the WPILib types students actually meet on a robot — `edu.wpi.first.units`, `Rotation2d`,
+`Translation2d`, `MathUtil`. See [Writing koans that use WPILib](#writing-koans-that-use-wpilib).
+
 ### Compromises and limitations
 
 - The koans are, for now, not looking at the code within methods. Therefore, some instructions compliance cannot be assessed. For example: 'using method xyz()'.
@@ -90,7 +98,7 @@ Here are suggestions, in ascending order of involvement:
 * Submit [issues](https://github.com/jletroui/FrcJavaKoans/issues/new) or pull requests for better koans replacing existing ones. In particular, one improvements we are trying to converge to are koans exhibiting the same pedagogic targets and quality, but FRC and robot themed.
 * Submit [issues](https://github.com/jletroui/FrcJavaKoans/issues/new) or pull requests for new koans in existing series plugging a hole in the learning journey.
 * Better engine code comments or test coverage.
-* Submit a new bonus koan series. Current potentially beneficial areas not covered: sugar syntax (var, ternary operator, etc...), inheritance (and its fallbacks), generics, etc...
+* Submit a new koan series. Current potentially beneficial areas not covered: sugar syntax (var, ternary operator, etc...), inheritance (and its fallbacks), generics, etc...
 * A new language localization. This involves:
   1. Adding the new [Locale](https://github.com/jletroui/FrcJavaKoans/blob/master/src/main/java/engine/Locale.java) and [Localizable helper](https://github.com/jletroui/FrcJavaKoans/blob/master/src/main/java/engine/Localizable.java#L20).
   2. Translating all [sensei and assertion messages](https://github.com/jletroui/FrcJavaKoans/blob/master/src/main/java/engine/Texts.java).
@@ -100,15 +108,65 @@ Here are suggestions, in ascending order of involvement:
   6. Repeat 5. for the [bonus koans](https://github.com/jletroui/FrcJavaKoans/tree/master/src/main/java/bonuses/english).
   7. Add koans solutions for the new language in [the testing companion project](https://github.com/jletroui/FrcJavaKoansTests), to make sure koans work in the new language as well.
 
+## Adding a koan series
+
+Every series is two files plus one line:
+
+1. `src/main/java/koans/AboutX.java` — what the student reads and edits. Comments state the goal;
+   the student writes the methods.
+2. `src/main/java/sensei/AboutXKoans.java` — the `List<Koan>` the engine runs, built from the
+   `Koan`/`KoanTest` DSL and the assertions in `engine.Assertions`. Koan titles go in
+   `sensei/Texts.java` so they stay localizable.
+3. Add `AboutXKoans.koans` to the list in [Wisdom.java](src/main/java/sensei/Wisdom.java), in the
+   position where the student is ready for it. There is one ordered path — no separate advanced
+   series — so position is the whole curriculum decision.
+
+Reference the koan class with a `.class` literal, never a fully-qualified name in a string. The
+engine derives the clickable `src/main/java/...` paths in its failure messages from
+`Class.getName()`, so `.class` literals keep working if a package is ever renamed.
+
+## Writing koans that use WPILib
+
+WPILib is on the compile classpath, so a koan can just import it:
+
+```java
+import edu.wpi.first.math.geometry.Rotation2d;
+import static edu.wpi.first.units.Units.Meters;
+```
+
+What is available, and what is not:
+
+- **Available**: anything pure Java — `edu.wpi.first.units` (the whole units library),
+  `edu.wpi.first.math.geometry` (`Rotation2d`, `Translation2d`, `Pose2d`, ...),
+  `edu.wpi.first.math.kinematics`, `MathUtil`, and the matrix types backed by EJML.
+- **Not available**: anything needing native code. There is no HAL, no simulation, and no JNI
+  natives on the classpath, so `WPIMathJNI`-backed classes (`DARE`, `LinearQuadraticRegulator`)
+  will fail at runtime. This is deliberate — the koans teach types and math, not a robot program.
+
+The WPILib release is pinned by `wpilibVersion` in [gradle.properties](gradle.properties). Bumping a
+season is a one-line change there, but check that the `ejml` / `jackson` / `quickbuf` versions in
+[build.gradle](build.gradle) still match allwpilib's own `wpimath/build.gradle` at the new tag —
+WPILib publishes POMs with no transitive dependencies, so we pin them by hand.
+
 ## Testing
 
 Automated testing of this project was challenging for a few reasons, main ones being:
 
-1. By design, we don't have a build tool (Gradle or Maven for example), nor access to any libraries. So no JUnit on hand to test the koans engine.
+1. Upstream, this project had no build tool (Gradle or Maven for example) and no access to any libraries. So no JUnit on hand to test the koans engine.
 2. We would not want to include solutions to the koans within the project, because the students might stumble on them, which would affect their learning.
 
 Here are the compromises we came up with to solve these challenges:
 
-For 1., we have created a mini test framework in `engine.test.runner` in order to run unit and integration tests of the koans engine. Tests are located in `engine.test`. To run those tests, simply run the `engine.test.runner.TestRunner.main` method.
+For 1., we have created a mini test framework in `engine.test.runner` in order to run unit and integration tests of the koans engine. Tests are located in `engine.test`. Run them with:
+
+```sh
+./gradlew engineTests
+```
+
+This fork _does_ now use Gradle (see [build.gradle](build.gradle)), so JUnit would be available. The
+hand-rolled runner is kept because the existing engine tests are written against it, not because we
+still have to. Note the runner discovers suites by listing the `engine/test` directory on the
+classpath, so it only works when classes are on a directory classpath — which is what
+`./gradlew engineTests` gives it. It would not find anything inside a jar.
 
 For 2., we have created a [brother project](https://github.com/jletroui/FrcJavaKoansTests) testing the koans themselves.

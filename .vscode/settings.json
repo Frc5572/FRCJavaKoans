@@ -1,9 +1,5 @@
 {
-    "java.project.sourcePaths": [
-        "src/main/java"
-    ],
-    "java.project.outputPath": "bin",
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar"
-    ]
+    "java.import.gradle.enabled": true,
+    "java.import.gradle.wrapper.enabled": true,
+    "java.configuration.updateBuildConfiguration": "automatic"
 }
