@@ -271,7 +271,10 @@ public class Assertions {
             if (actual == null) {
                 p.println(red(EXPECTED_TO_RETURN_ANONYMOUS_BUT_RETURNED_NULL, code(res.resultExpressionSourceCode)));
                 return false;
-            } else if (actual.getClass().getSimpleName().contains("$$Lambda$")) { // Kind of hacky, but only way as far as I know
+            // Kind of hacky, but only way as far as I know. Do not put a '$' back after "Lambda":
+            // up to Java 17 a lambda was named Xxx$$Lambda$1/0x..., but Java 21 dropped the counter
+            // and named it Xxx$$Lambda/0x..., which silently stopped matching.
+            } else if (actual.getClass().getSimpleName().contains("$$Lambda")) {
                 p.println(red(EXPECTED_TO_RETURN_ANONYMOUS_BUT_RETURNED_LAMBDA, code(res.resultExpressionSourceCode)));
                 return false;
             } else if (!actual.getClass().isAnonymousClass()) {
